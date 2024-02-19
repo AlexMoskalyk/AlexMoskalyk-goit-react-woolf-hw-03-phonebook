@@ -26,10 +26,8 @@ export default class App extends Component {
   }
 
   componentDidUpdate(_, prevState) {
-    const currentContactsSerialized = JSON.stringify(this.state.contacts);
-    const prevContactsSerialized = JSON.stringify(prevState.contacts);
-
-    if (currentContactsSerialized !== prevContactsSerialized) {
+    if (prevState.contcts !== this.state.contacts) {
+      const currentContactsSerialized = JSON.stringify(this.state.contacts);
       localStorage.setItem('contacts', currentContactsSerialized);
     }
   }
