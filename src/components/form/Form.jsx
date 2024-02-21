@@ -9,12 +9,13 @@ export const SiteForm = ({ createConatct }) => {
         name: '',
         number: '',
       }}
-      onSubmit={obj => {
+      onSubmit={(obj, actions) => {
         if (!obj.name.trim().toLowerCase()) {
           alert(`Please enter a name!`);
           return;
         }
         createConatct(obj);
+        actions.resetForm();
       }}
     >
       {formik => (
@@ -41,7 +42,11 @@ export const SiteForm = ({ createConatct }) => {
               required
             />
           </label>
-          <button type="submit" className={css.btn}>
+          <button
+            type="submit"
+            className={css.btn}
+            // onClick={() => formik.resetForm()}
+          >
             Add contact
           </button>
         </form>
